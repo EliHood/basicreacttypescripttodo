@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-// we need an interface to be able to use the state properties
+// we need an interface to be able to use the state properties, if not error.
+// the same rule applies when using props
 // so here we call Istate
 interface IState {
   currentTask: string;
@@ -16,6 +17,9 @@ export default class App extends React.Component<{}, IState>{
       tasks:[]
     }
   }
+
+  // when using e.preventDefault in typescript, or any paramater, it has to be followed
+ //  by the following any, array, string, etc. in this case we use any
 
   handleSubmit(e: any){
     e.preventDefault();
