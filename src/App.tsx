@@ -45,7 +45,7 @@ export default class App extends React.Component<{}, IState>{
     // console.log(this.state);
     return (
       <div className="App">
-        <h1>React Typescript Todo</h1>
+        <h1 className="sampleh1">React Typescript Todo</h1>
         <form onSubmit={(e) => this.handleSubmit(e)}>
            <input value={this.state.currentTask} type="text" placeholder="enter a todo"
             onChange={this.onChange}/>
