@@ -14,3 +14,18 @@ describe('Should render <App/> component', () => {
   
 
 })
+
+describe('Should test onChange method', ()=> {
+  it('should test onChange method', ()=> {
+    const component = shallow(<App/>)
+    component.find('input').simulate('change', {
+      preventDefault() {},
+      target:{
+        value: "test"
+
+      }
+    })
+    expect(component.state('currentTask')).toEqual('test')
+
+  })
+})
