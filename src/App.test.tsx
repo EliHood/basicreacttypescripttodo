@@ -53,17 +53,9 @@ describe('Should test empty array on onSubmit method',() => {
     const component = shallow(<App/>)
     const form = component.find('Form').at(0);
     const preventDefault = jest.fn();
-    // const items = ['Learn react', 'rest', 'go out'];
-    // component.setState({
-    //  currentTask:"test-task",
-    //  tasks:[...items, 'test-task']
-    // })
-
-    // form.simulate('submit', { preventDefault });
-    // expect(preventDefault).toBeCalled();
-    // form.props().onSubmit();
+ 
     form.simulate('submit', {preventDefault})
-    expect(component.state().tasks).toHaveLength(1);
+    expect(component.state().tasks).toHaveLength(0);
 
   })
 })

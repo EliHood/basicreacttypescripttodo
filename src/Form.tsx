@@ -7,12 +7,12 @@ interface formProps {
     currentTask: string;    
 }
 
-const Form: React.SFC<formProps> = (props) => {
+const Form = (props: formProps) => {
     return(
         <div>
             <form onSubmit={props.onSubmit}>
                 <input value={props.currentTask} type="text" placeholder="enter a todo"
-                onChange={props.onChange}/>
+                onChange={props.onChange} required/>
                 <button type="submit"> Add Todo</button>
             </form>
         </div>

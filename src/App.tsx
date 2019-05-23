@@ -24,10 +24,10 @@ export default class App extends React.Component<{}, IState>{
 
   handleSubmit(e: any){
     e.preventDefault();
-    this.setState({
+    this.setState(prevState =>({
       currentTask: "",
-      tasks: [...this.state.tasks, this.state.currentTask]
-    }, () => {
+      tasks: prevState.currentTask ? [...prevState.tasks, prevState.currentTask] : prevState.tasks
+    }), () => {
       console.log(this.state.tasks)
     })
     
