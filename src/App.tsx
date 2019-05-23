@@ -42,7 +42,6 @@ export default class App extends React.Component<{}, IState>{
   }
 
   render(){
-    // console.log(this.state);
     return (
       <div className="App">
         <h1 className="sampleh1">React Typescript Todo</h1>
