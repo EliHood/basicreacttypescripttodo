@@ -14,29 +14,27 @@ describe('Should render <App/> component', () => {
   
 
 })
-
-describe('Should test onChange method', ()=> {
+describe('should test onChange method', () => {
   it('should test onChange method', ()=> {
     const component = shallow(<App/>)
-    // here will find the input on the form 
-    component.find('input').simulate('change', {
-      // we call preventDefault here, if not it will show e.preventDefault error
+
+    const form = component.find('Form').at(0);
+    form.props().onChange({
       preventDefault() {},
       target:{
-        value: "test"
-
+        value: 'test-todo'
       }
     })
-    // currentTask is equal to state property of currentTask in the App.tsx file. 
-    expect(component.state('currentTask')).toEqual('test')
-
+    expect(component.state('currentTask')).toEqual('test-todo')
   })
 })
+
 
 
 describe('Should test onSubmit method',() => {
   it('should test onSubmit method', ()=>{
     const component = shallow(<App/>)
+    const form = component.find('Form').at(0);
     const preventDefault = jest.fn();
     const items = ['Learn react', 'rest', 'go out'];
     component.setState({
@@ -44,8 +42,30 @@ describe('Should test onSubmit method',() => {
      tasks:[...items, 'test-task']
     })
 
-    component.find('form').simulate('submit', { preventDefault });
+    form.simulate('submit', { preventDefault });
     expect(preventDefault).toBeCalled();
 
   })
 })
+
+describe('Should test empty array on onSubmit method',() => {
+  it('should test empty array onSubmit method', ()=>{
+    const component = shallow(<App/>)
+    const form = component.find('Form').at(0);
+    const preventDefault = jest.fn();
+    // const items = ['Learn react', 'rest', 'go out'];
+    // component.setState({
+    //  currentTask:"test-task",
+    //  tasks:[...items, 'test-task']
+    // })
+
+    // form.simulate('submit', { preventDefault });
+    // expect(preventDefault).toBeCalled();
+    // form.props().onSubmit();
+    form.simulate('submit', {preventDefault})
+    expect(component.state().tasks).toHaveLength(1);
+
+  })
+})
+
+
