@@ -11,13 +11,12 @@ interface IState {
 }
 
 export default class App extends React.Component<{}, IState>{
-  constructor(props: {}){
-    super(props);
-    this.state = {
+
+    state: IState = {
       currentTask: "",
       tasks:[]
     }
-  }
+
 
   // when using e.preventDefault in typescript, or any paramater, it has to be followed
  //  by the following any, array, string, etc. in this case we use any
